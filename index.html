@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="منصة تعليمية لحساب وشرح معادلات التداول (سكالبينج الذهب 1–5 دقائق) — تعليمي فقط." />
+  <title>معادلات التداول — منصة تدريبية</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">تخطي إلى المحتوى</a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <!-- Inline SVG (local) -->
+          <svg viewBox="0 0 48 48" width="28" height="28" role="img" aria-label="Logo">
+            <path d="M24 4l6 10 12 2-8 8 2 12-12-6-12 6 2-12-8-8 12-2 6-10z" fill="currentColor" opacity="0.9"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">معادلات التداول</div>
+          <div class="brand-sub">تعليمي فقط • XAUUSD سكالبينج 1–5 دقائق</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="التنقل الرئيسي">
+        <a class="nav-link" href="#formulas">المعادلات</a>
+        <a class="nav-link" href="#calculators">الحاسبات</a>
+        <a class="nav-link" href="#learn">التعلّم</a>
+        <a class="nav-link" href="#about">حول</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="themeToggle" class="btn btn-ghost" type="button" aria-label="تبديل المظهر">
+          <span class="btn-icon" aria-hidden="true">☾</span>
+          <span class="btn-text">الوضع</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-card glass">
+          <div class="hero-badge">
+            <span class="pill">Offline</span>
+            <span class="pill">No Frameworks</span>
+            <span class="pill">RTL</span>
+          </div>
+
+          <h1 class="hero-title">معادلات التداول — منصة تدريبية</h1>
+          <p class="hero-subtitle">تعليمي فقط • سكالبينج الذهب 1–5 دقائق</p>
+
+          <p class="hero-note">
+            ملاحظة مهمة: النتائج تختلف حسب <span class="kbd">Contract Size</span> و <span class="kbd">Tick Value</span> و
+            <span class="kbd">Spread</span> و <span class="kbd">Commission</span> لدى وسيطك.
+            تأكد دائمًا من مواصفات الرمز داخل MT5: <span class="kbd">Symbol Specification</span>.
+          </p>
+
+          <div class="hero-search">
+            <label class="label" for="searchInput">بحث سريع داخل المعادلات والحاسبات</label>
+            <div class="search-row">
+              <input id="searchInput" class="input input-lg" type="search"
+                     placeholder="ابحث: PnL • Spread • Risk • Expectancy • Margin ..."
+                     autocomplete="off" />
+              <button id="clearSearch" class="btn btn-secondary" type="button" aria-label="مسح البحث">مسح</button>
+            </div>
+            <div class="hint">
+              البحث يفلتر بطاقات المعادلات (العنوان/الصيغة/المتغيرات/الوصف). لا يوجد أي اتصال بالإنترنت.
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="side-card glass">
+            <h2 class="side-title">إخلاء مسؤولية</h2>
+            <p class="side-text">
+              <strong>تعليمي فقط.</strong> لا توجد توصيات شراء/بيع، ولا ضمانات أرباح.
+              جرّب على حساب تجريبي أولًا، وتحقق من القيم من منصتك.
+            </p>
+            <div class="side-divider"></div>
+            <ul class="side-list">
+              <li>سكالبينج = حساس جدًا للسبريد والعمولة.</li>
+              <li>Tick Value يختلف حسب الرمز/الحجم/الوسيط.</li>
+              <li>أي معادلة هنا = أداة فهم/تدريب، وليست قرار تداول.</li>
+            </ul>
+          </div>
+
+          <div class="side-card glass">
+            <h2 class="side-title">اختصارات مفيدة (تعليمية)</h2>
+            <div class="chips">
+              <span class="chip">Ticks = نقاط حركة</span>
+              <span class="chip">Lots = حجم الصفقة</span>
+              <span class="chip">R:R = نسبة العائد للمخاطرة</span>
+              <span class="chip">DD% = نسبة السحب</span>
+              <span class="chip">BE = نقطة التعادل</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULAS -->
+    <section class="section" id="formulas">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">المعادلات</h2>
+          <p class="section-desc">
+            بطاقات تعليمية (20+) مع الصيغة، شرح المتغيرات، مثال رمزي، ولماذا تهم خصوصًا للسكالبينج.
+          </p>
+        </div>
+
+        <div class="toolbar">
+          <div class="toolbar-left">
+            <span id="resultCount" class="muted">—</span>
+          </div>
+          <div class="toolbar-right">
+            <button id="expandAll" class="btn btn-ghost" type="button">توسيع الكل</button>
+            <button id="collapseAll" class="btn btn-ghost" type="button">طيّ الكل</button>
+          </div>
+        </div>
+
+        <div id="formulaGrid" class="grid cards-grid" aria-live="polite">
+          <!-- Injected by app.js -->
+        </div>
+
+        <div class="section-foot">
+          <div class="disclaimer glass" role="note" aria-label="إخلاء مسؤولية">
+            <p>
+              <strong>Educational only.</strong> No profit guarantees. Use demo first.
+              — تعليمي فقط، بدون ضمانات أرباح، جرّب ديمو أولًا.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALCULATORS -->
+    <section class="section" id="calculators">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">الحاسبات</h2>
+          <p class="section-desc">
+            حاسبات تفاعلية بنتائج فورية + تحقق من المدخلات + ملاحظات تعليمية. (لا إشارات تداول)
+          </p>
+        </div>
+
+        <div class="grid calc-grid">
+          <!-- 1) Position Size -->
+          <article class="card glass calc" data-calc="possize">
+            <header class="card-head">
+              <h3 class="card-title">حجم الصفقة (Lots) — (Position Size)</h3>
+              <p class="card-sub">يحسب المخاطرة بالدولار وحجم اللوت بناءً على وقف الخسارة بالـTicks.</p>
+            </header>
+
+            <div class="formula-box">
+              <div class="mono">Risk($) = Balance × Risk%</div>
+              <div class="mono">Lots = Risk($) ÷ (StopTicks × TickValue@1.00)</div>
+            </div>
+
+            <div class="vars">
+              <span class="chip"><code>Balance</code> الرصيد</span>
+              <span class="chip"><code>Risk%</code> نسبة المخاطرة</span>
+              <span class="chip"><code>StopTicks</code> وقف الخسارة بالتيك</span>
+              <span class="chip"><code>TickValue@1.00</code> قيمة التيك للّوت 1.00</span>
+            </div>
+
+            <div class="form">
+              <label class="label" for="ps_balance">Balance (الرصيد)</label>
+              <input class="input" id="ps_balance" type="number" inputmode="decimal" min="0" step="0.01" placeholder="مثال: 500" />
+
+              <label class="label" for="ps_risk">Risk % (نسبة المخاطرة)</label>
+              <input class="input" id="ps_risk" type="number" inputmode="decimal" min="0" step="0.01" placeholder="مثال: 1" />
+
+              <label class="label" for="ps_stop">Stop Ticks (وقف الخسارة بالتيك)</label>
+              <input class="input" id="ps_stop" type="number" inputmode="decimal" min="0" step="1" placeholder="مثال: 120" />
+
+              <label class="label" for="ps_tick">Tick Value @ 1.00 (قيمة التيك للّوت 1.00)</label>
+              <input class="input" id="ps_tick" type="number" inputmode="decimal" min="0" step="0.01" placeholder="مثال: 0.10" />
+
+              <div class="row">
+                <button class="btn btn-secondary js-example" type="button" data-example="possize">تعبئة مثال</button>
+                <button class="btn btn-ghost js-reset" type="button">إعادة</button>
+              </div>
+            </div>
+
+            <div class="result" aria-live="polite">
+              <div class="result-line"><span class="muted">Risk($):</span> <strong id="ps_riskUsd">—</strong></div>
+              <div class="result-line"><span class="muted">Lots:</span> <strong id="ps_lots">—</strong></div>
+              <div class="result-hint">
+                ملاحظة تعليمية: كثير من الوسطاء يقبلون خطوة لوت مثل <span class="kbd">0.01</span>. تأكد من <span class="kbd">Lot Step</span> في MT5.
+              </div>
+              <div class="warn" id="ps_warn" hidden></div>
+            </div>
+          </article>
+
+          <!-- 2) PnL -->
+          <article class="card glass calc" data-calc="pnl">
+            <header class="card-head">
+              <h3 class="card-title">الربح/الخسارة الإجمالي — (Gross PnL)</h3>
+              <p class="card-sub">يعتمد على عدد التيكات المتحركة وقيمة التيك وحجم اللوت.</p>
+            </header>
+
+            <div class="formula-box">
+              <div class="mono">PnL($) = TicksMoved × TickValue@1.00 × Lots</div>
+            </div>
+
+            <div class="vars">
+              <span class="chip"><code>Lots</code> حجم الصفقة</span>
+              <span class="chip"><code>TicksMoved</code> مقدار الحركة بالتيك</span>
+              <span class="chip"><code>TickValue@1.00</code> قيمة التيك للّوت 1.00</span>
+            </div>
+
+            <div class="form">
+              <label class="label" for="pnl_lots">Lots</label>
+              <input class="input" id="pnl_lots" type="number" inputmode="decimal" min="0" step="0.01" placeholder="مثال: 0.20" />
+
+              <label class="label" for="pnl_ticks">Ticks Moved</label>
+              <input class="input" id="pnl_ticks" type="number" inputmode="decimal" step="1" placeholder="مثال: 50" />
+
+              <label class="label" for="pnl_tickval">Tick Value @ 1.00</label>
+              <input class="input" id="pnl_tickval" type="number" inputmode="decimal" min="0" step="0.01" placeholder="مثال: 0.10" />
+
+              <div class="row">
+                <button class="btn btn-secondary js-example" type="button" data-example="pnl">تعبئة مثال</button>
+                <button class="btn btn-ghost js-reset" type="button">إعادة</button>
+              </div>
+            </div>
+
+            <div class="result" aria-live="polite">
+              <div class="result-line"><span class="muted">Gross PnL($):</span> <strong id="pnl_out">—</strong></div>
+              <div class="result-hint">
+                ملاحظة تعليمية: هذه نتيجة <strong>قبل</strong> تكاليف السبريد والعمولة.
+              </div>
+              <div class="warn" id="pnl_warn" hidden></div>
+            </div>
+          </article>
+
+          <!-- 3) Net PnL -->
+          <article class="card glass calc" data-calc="netpnl">
+            <header class="card-head">
+              <h3 class="card-title">الربح/الخسارة الصافي — (Net PnL)</h3>
+              <p class="card-sub">يخصم تكلفة السبريد والعمولة (Round Turn) من الربح/الخسارة الإجمالي.</p>
+            </header>
+
+            <div class="formula-box">
+              <div class="mono">GrossPnL = TicksMoved × TickValue@1.00 × Lots</div>
+              <div class="mono">SpreadCost = SpreadTicks × TickValue@1.00 × Lots</div>
+              <div class="mono">CommissionCost = CommissionPerLotRoundTurn × Lots</div>
+              <div class="mono">NetPnL = GrossPnL − SpreadCost − CommissionCost</div>
+            </div>
+
+            <div class="vars">
+              <span class="chip"><code>SpreadTicks</code> السبريد بالتيك</span>
+              <span class="chip"><code>CommissionPerLotRoundTurn</code> عمولة اللوت (فتح+إغلاق)</span>
+            </div>
+
+            <div class="form">
+              <label class="label" for="np_lots">Lots</label>
+              <input class="input" id="np_lots" type="number" inputmode="decimal" min="0" step="0.01" placeholder="مثال: 0.30" />
+
+              <label class="label" for="np_ticks">Ticks Moved</label>
+              <input class="input" id="np_ticks" type="number" inputmode="decimal" step="1" placeholder="مثال: 40" />
+
+              <label class="label" for="np_tickval">Tick Value @ 1.00</label>
+              <input class="input" id="np_tickval" type="number" inputmode="decimal" min="0" step="0.01" placeholder="مثال: 0.10" />
+
+              <label class="label" for="np_spread">Spread Ticks</label>
+              <input class="input" id="np_spread" type="number" inputmode="decimal" min="0" step="1" placeholder="مثال: 18" />
+
+              <label class="label" for="np_comm">Commission per Lot (Round Turn)</label>
+              <input class="input" id="np_comm" type="number" inputmode="decimal" min="0" step="0.01" placeholder="مثال: 7" />
+
+              <div class="row">
+                <button class="btn btn-secondary js-example" type="button" data-example="netpnl">تعبئة مثال</button>
+                <button class="btn btn-ghost js-reset" type="button">إعادة</button>
+              </div>
+            </div>
+
+            <div class="result" aria-live="polite">
+              <div class="result-grid">
+                <div class="result-line"><span class="muted">GrossPnL($):</span> <strong id="np_gross">—</strong></div>
+                <div class="result-line"><span class="muted">SpreadCost($):</span> <strong id="np_spreadCost">—</strong></div>
+                <div class="result-line"><span class="muted">CommissionCost($):</span> <strong id="np_commCost">—</strong></div>
+                <div class="result-line"><span class="muted">NetPnL($):</span> <strong id="np_net">—</strong></div>
+              </div>
+              <div class="result-hint">
+                ملاحظة تعليمية: للسكالبينج، تكاليف السبريد قد تلتهم جزءًا كبيرًا من الهدف (TP) إذا كان صغيرًا جدًا.
+              </div>
+              <div class="warn" id="np_warn" hidden></div>
+            </div>
+          </article>
+
+          <!-- 4) Breakeven Move -->
+          <article class="card glass calc" data-calc="breakeven">
+            <header class="card-head">
+              <h3 class="card-title">حركة التعادل (Ticks) — (Breakeven Move)</h3>
+              <p class="card-sub">كم تيك تحتاج لتغطية السبريد والعمولة قبل تحقيق ربح صافي.</p>
+            </header>
+
+            <div class="formula-box">
+              <div class="mono">BE_Ticks = SpreadTicks + (CommissionCost / (TickValue@1.00 × Lots))</div>
+              <div class="mono">CommissionCost = CommissionPerLotRoundTurn × Lots</div>
+            </div>
+
+            <div class="vars">
+              <span class="chip"><code>BE_Ticks</code> تيكات التعادل</span>
+              <span class="chip"><code>SpreadTicks</code> السبريد</span>
+              <span class="chip"><code>Commission</code> عمولة</span>
+            </div>
+
+            <div class="form">
+              <label class="label" for="be_lots">Lots</label>
+              <input class="input" id="be_lots" type="number" inputmode="decimal" min="0" step="0.01" placeholder="مثال: 0.25" />
+
+              <label class="label" for="be_spread">Spread Ticks</label>
+              <input class="input" id="be_spread" type="number" inputmode="decimal" min="0" step="1" placeholder="مثال: 16" />
+
+              <label class="label" for="be_comm">Commission per Lot (Round Turn)</label>
+              <input class="input" id="be_comm" type="number" inputmode="decimal" min="0" step="0.01" placeholder="مثال: 7" />
+
+              <label class="label" for="be_tickval">Tick Value @ 1.00</label>
+              <input class="input" id="be_tickval" type="number" inputmode="decimal" min="0" step="0.01" placeholder="مثال: 0.10" />
+
+              <div class="row">
+                <button class="btn btn-secondary js-example" type="button" data-example="breakeven">تعبئة مثال</button>
+                <button class="btn btn-ghost js-reset" type="button">إعادة</button>
+              </div>
+            </div>
+
+            <div class="result" aria-live="polite">
+              <div class="result-line"><span class="muted">Breakeven Move (Ticks):</span> <strong id="be_out">—</strong></div>
+              <div class="result-hint">
+                ملاحظة تعليمية: إذا كان هدفك (TP) قريبًا جدًا من <span class="kbd">BE_Ticks</span> فغالبًا لن يبقى هامش ربح بعد التكاليف.
+              </div>
+              <div class="warn" id="be_warn" hidden></div>
+            </div>
+          </article>
+
+          <!-- 5) Risk$ -->
+          <article class="card glass calc" data-calc="riskusd">
+            <header class="card-head">
+              <h3 class="card-title">المخاطرة بالدولار — (Risk $)</h3>
+              <p class="card-sub">تحويل نسبة المخاطرة إلى رقم واضح بالدولار.</p>
+            </header>
+
+            <div class="formula-box">
+              <div class="mono">Risk($) = Balance × Risk%</div>
+            </div>
+
+            <div class="vars">
+              <span class="chip"><code>Balance</code> الرصيد</span>
+              <span class="chip"><code>Risk%</code> نسبة المخاطرة</span>
+            </div>
+
+            <div class="form">
+              <label class="label" for="ru_balance">Balance</label>
+              <input class="input" id="ru_balance" type="number" inputmode="decimal" min="0" step="0.01" placeholder="مثال: 800" />
+
+              <label class="label" for="ru_risk">Risk %</label>
+              <input class="input" id="ru_risk" type="number" inputmode="decimal" min="0" step="0.01" placeholder="مثال: 0.75" />
+
+              <div class="row">
+                <button class="btn btn-ghost js-reset" type="button">إعادة</button>
+              </div>
+            </div>
+
+            <div class="result" aria-live="polite">
+              <div class="result-line"><span class="muted">Risk($):</span> <strong id="ru_out">—</strong></div>
+              <div class="result-hint">
+                ملاحظة تعليمية: للمبتدئين غالبًا تُستخدم نطاقات مثل <span class="kbd">0.5%–2%</span> كقاعدة تدريبية عامة (ليس توصية شخصية).
+              </div>
+              <div class="warn" id="ru_warn" hidden></div>
+            </div>
+          </article>
+
+          <!-- 6) R:R -->
+          <article class="card glass calc" data-calc="rr">
+            <header class="card-head">
+              <h3 class="card-title">نسبة العائد للمخاطرة — (R:R)</h3>
+              <p class="card-sub">تقيس كم عائد (TP) مقابل المخاطرة (SL).</p>
+            </header>
+
+            <div class="formula-box">
+              <div class="mono">R:R = TPDistance ÷ SLDistance</div>
+            </div>
+
+            <div class="vars">
+              <span class="chip"><code>TPDistance</code> مسافة الهدف</span>
+              <span class="chip"><code>SLDistance</code> مسافة الوقف</span>
+            </div>
+
+            <div class="form">
+              <label class="label" for="rr_tp">TP Distance</label>
+              <input class="input" id="rr_tp" type="number" inputmode="decimal" min="0" step="1" placeholder="مثال: 60" />
+
+              <label class="label" for="rr_sl">SL Distance</label>
+              <input class="input" id="rr_sl" type="number" inputmode="decimal" min="0" step="1" placeholder="مثال: 30" />
+
+              <div class="row">
+                <button class="btn btn-ghost js-reset" type="button">إعادة</button>
+              </div>
+            </div>
+
+            <div class="result" aria-live="polite">
+              <div class="result-line"><span class="muted">R:R:</span> <strong id="rr_out">—</strong></div>
+              <div class="result-hint">
+                ملاحظة تعليمية: R:R وحدها لا تكفي — يجب ربطها بإحصائيات مثل WinRate و Expectancy.
+              </div>
+              <div class="warn" id="rr_warn" hidden></div>
+            </div>
+          </article>
+
+          <!-- 7) Breakeven Win Rate -->
+          <article class="card glass calc" data-calc="bewr">
+            <header class="card-head">
+              <h3 class="card-title">نسبة الفوز للتعادل — (Breakeven Win Rate)</h3>
+              <p class="card-sub">كم تحتاج نسبة فوز لتتعادل رياضيًا (بدون تكاليف).</p>
+            </header>
+
+            <div class="formula-box
